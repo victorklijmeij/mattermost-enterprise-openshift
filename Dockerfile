@@ -28,7 +28,7 @@ RUN yum update -y --setopt=tsflags=nodocs && \
 
 RUN cd /opt && \
     curl -LO -v https://releases.mattermost.com/${MATTERMOST_VERSION}/mattermost-${MATTERMOST_VERSION}-linux-amd64.tar.gz && \
-    tar xf mattermost-team-${MATTERMOST_VERSION}-linux-amd64.tar.gz &&\
+    tar xf mattermost-${MATTERMOST_VERSION}-linux-amd64.tar.gz &&\
     rm mattermost-team-${MATTERMOST_VERSION}-linux-amd64.tar.gz
 
 COPY mattermost-launch.sh /opt/mattermost/bin/mattermost-launch.sh
