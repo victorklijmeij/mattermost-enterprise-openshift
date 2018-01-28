@@ -31,8 +31,8 @@ RUN cd /opt && \
     tar xf mattermost-${MATTERMOST_VERSION}-linux-amd64.tar.gz &&\
     rm mattermost-${MATTERMOST_VERSION}-linux-amd64.tar.gz
 
-COPY mattermost-launch.sh /opt/mattermost/bin/mattermost-launch.sh
 COPY config.json /opt/mattermost/config/config.json
+COPY mattermost-launch.sh /opt/mattermost/bin/mattermost-launch.sh
 RUN chmod 777 /opt/mattermost/config/config.json && \
     mkdir /opt/mattermost/data && \
     chmod 777 /opt/mattermost/logs/ /opt/mattermost/data
