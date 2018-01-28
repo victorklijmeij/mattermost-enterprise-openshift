@@ -1,7 +1,9 @@
 # Mattermost for OpenShift Origin 3
 
-[![Build Status](https://travis-ci.org/goern/mattermost-openshift.svg?branch=master)](https://travis-ci.org/goern/mattermost-openshift)
-[![Container Image Repository on Quay](https://quay.io/repository/goern/mattermost-openshift/status)](https://quay.io/repository/goern/mattermost-openshift)
+This is a fork of [mattermost-openshift](https://github.com/goern/mattermost-openshift)
+
+Reworked for Mattermost [Enterprise edition](https://about.mattermost.com/features/#featuresEnterprise)
+
 
 This is instant Mattermost application for OpenShift Origin 3.
 
