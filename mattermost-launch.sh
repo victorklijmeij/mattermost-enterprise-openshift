@@ -13,8 +13,8 @@ echo -ne "Configure MySQL database connection..."
 sed -e 's#"DataSource": "mmuser:mostest@tcp(mysql:3306)/mattermost_test?charset=utf8mb4,utf8"#"DataSource": "'"$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT_5432_TCP_PORT/$DB_DATABASE??sslmode=disable&connect_timeout=10"'"#' \
     /opt/mattermost/config/config.json > /tmp/config.json
 
-sed -e 's#"DataSource": "postgres://mmuser:mostest@postgresql:5432/mattermost_test?sslmode=disable&connect_timeout=10"#"DataSource": "'"$DB_USER:$DB_PASSWORD@tcp($DB_HOST:$DB_PORT_3306_TCP_PORT)/$DB_DATABASE?charset=utf8mb4,utf8"'"#' \
-    /opt/mattermost/config/config.json > /tmp/config.json
+#sed -e 's#"DataSource": "postgres://mmuser:mostest@postgresql:5432/mattermost_test?sslmode=disable&connect_timeout=10"#"DataSource": "'"$DB_USER:$DB_PASSWORD@tcp($DB_HOST:$DB_PORT_3306_TCP_PORT)/$DB_DATABASE?charset=utf8mb4,utf8"'"#' \
+#    /opt/mattermost/config/config.json > /tmp/config.json
 
 cat /tmp/config.json >/opt/mattermost/config/config.json
 echo "done"
