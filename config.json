@@ -38,7 +38,7 @@
         "RestrictDirectMessage": "any"
     },
     "SqlSettings": {
-        "DriverName": "mysql",
+        "DriverName": "postgresql",
         "DataSource": "MATTERMOST_DATASOURCE_REPLACE",
         "DataSourceReplicas": [],
         "MaxIdleConns": 10,
