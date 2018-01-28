@@ -8,7 +8,7 @@ MM_DBNAME=${DB_DATABASE:-mattermost}
 
 echo -ne "Configure PostgresSQL database connection..."
 
-sed "s/MATTERMOST_DATASOURCE_REPLACE/$DB_USER:$DB_PASSWORD\@$DB_HOST:$DB_PORT_5432_TCP_PORT\/$DB_DATABASE?sslmode=disable\&connect_timeout=10connect_timeout=10/" /opt/mattermost/config/config.json > /tmp/config.json
+sed "s/MATTERMOST_DATASOURCE_REPLACE/$DB_USER:$DB_PASSWORD\@$DB_HOST:$DB_PORT_5432_TCP_PORT\/$DB_DATABASE?sslmode=disable\&connect_timeout=10/" /opt/mattermost/config/config.json > /tmp/config.json
 
 cp /opt/mattermost/config/config.json /opt/mattermost/config/config.json.org
 cat /tmp/config.json >/opt/mattermost/config/config.json
