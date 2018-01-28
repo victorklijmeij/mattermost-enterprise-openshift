@@ -5,7 +5,6 @@ This is a fork of [mattermost-openshift](https://github.com/goern/mattermost-ope
 Reworked for Mattermost [Enterprise edition](https://about.mattermost.com/features/#featuresEnterprise)
 
 
-This is instant Mattermost application for OpenShift Origin 3.
 
 The license applies to all files inside this repository, not Mattermost itself.
 
