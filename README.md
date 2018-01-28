@@ -38,7 +38,7 @@ oc secrets link mattermost mattermost-database # make the secret available to th
 ```
 
 ### Deployment
-As Mattermost depends on it, lets deploy PostgreSQL to it using a persistent configuration: `oc new-app --param=POSTGRESQL_USER=mattermost --param=POSTGRESQL_PASSWORD=mostest --param=POSTGRESQL_DATABASE=mattermost registry.access.redhat.com/rhscl/postgresql-94-rhel7` 
+As Mattermost depends on it, lets deploy PostgreSQL to it using a persistent configuration: `oc new-app --template=openshift/postgresql-persistent --labels=app=mattermost --param=POSTGRESQL_USER=mmuser --param=POSTGRESQL_PASSWORD=mostest --param=POSTGRESQL_DATABASE=mattermost` 
 
 Next step, import the current image from quay.io and tag it as latest:
 
