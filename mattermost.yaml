@@ -8,16 +8,19 @@ message: |-
             Password: from secret `mattermost`
        Database Name: ${POSTGRESQL_DATABASE}
 
-  Please see https://github.com/goern/mattermost-openshift/blob/master/README.md for detailed infomation.
+  Please see https://github.com/victorklijmeij/mattermost-enterprise-openshift/blob/master/README.md for detailed infomation.
 
   Dont forget to export service ${APPLICATION_NAME} as a route!
 metadata:
   name: mattermost
   annotations:
     description: |-
-      PostgreSQL database service, with persistent storage. 
-
-      NOTE: Scaling to more than one replica is not supported. You must have persistent volumes available in your cluster to use this template.
+      Community template for running Mattermost Enterprise Edition on Openshift (Origin)
+      
+      Mattermost Enterprise features require a valid license.
+      
+      https://about.mattermost.com  
+ 
     openshift.io/display-name: Mattermost
     tags: mattermost
     template.openshift.io/documentation-url: https://github.com/goern/mattermost-openshift/blob/master/README.md
