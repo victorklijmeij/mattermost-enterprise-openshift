@@ -6,6 +6,7 @@ Reworked for Mattermost [Enterprise edition](https://about.mattermost.com/featur
 
 
 
+
 The license applies to all files inside this repository, not Mattermost itself.
 
 ## Prerequisites
@@ -40,19 +41,23 @@ oc secrets link mattermost mattermost-database # make the secret available to th
 ### Deployment
 As Mattermost depends on it, lets deploy PostgreSQL to it using a persistent configuration: `oc new-app --template=openshift/postgresql-persistent --labels=app=mattermost --param=POSTGRESQL_USER=mmuser --param=POSTGRESQL_PASSWORD=mostest --param=POSTGRESQL_DATABASE=mattermost` 
 
-Next step, import the current image from quay.io and tag it as latest:
+Next step, build a new image from checked out source with:
 
-```
-oc import-image quay.io/goern/mattermost-openshift:4.4.1 --confirm
-oc tag mattermost:4.4.1 mattermost:latest
-```
+``` 
+oc new-build . --strategy=docker --name mattermost
+``` 
 
-If you build your own image dont forget to push it to OpenShift's ImageStreamTag `mattermost/mattermost:latest`.
-
-Main step: deploy Mattermost app using the provided template: `oc new-app mattermost --labels=app=mattermost`. Deployments and Services will be created for you.
+This will create a new build and push the image to ImageStream <project>/mattermost:latest
 
 
-And a route:
+Main step: deploy Mattermost app using the provided template:
+
+`oc new-app mattermost --labels=app=mattermost`. 
+
+Deployments and Services will be created for you.
+
+
+And create a route:
 
 `oc expose service/mattermost --labels=app=mattermost --hostname=mattermost.example.com`
 
