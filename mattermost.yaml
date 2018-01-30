@@ -12,7 +12,7 @@ message: |-
 
   Dont forget to export service ${APPLICATION_NAME} as a route!
 metadata:
-  name: mattermost-openshift
+  name: mattermost
   annotations:
     description: |-
       PostgreSQL database service, with persistent storage. 
