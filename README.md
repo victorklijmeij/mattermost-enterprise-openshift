@@ -13,14 +13,15 @@ The license applies to all files inside this repository, not Mattermost itself.
 
 OpenShift Origin 3 up and running, including the capability to create a new project. The simple way is to use `oc cluster up` or [Minishift](https://docs.openshift.org/latest/minishift/getting-started/installing.html)
 
-And you need to deploy MySQL, described below.
+And you need to deploy PostgreSQL, described below.
 
 ## Disclaimer
 
 By now only a Docker build strategy based Mattermost application is provided, this may not be usable on OpenShift Online 3.
 
-This template and Mattermost startup script `mattermost-launch.sh` only supports MySQL.
-
+This template and Mattermost startup script `mattermost-launch.sh` only supports PostgreSQL.
+For MySQL see the [mattermost-openshift](https://github.com/goern/mattermost-openshift)
+ 
 Support for this work is provided as 'best can do' via GitHub.
 
 ## Installation
