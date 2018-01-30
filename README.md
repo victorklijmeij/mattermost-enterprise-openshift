@@ -6,20 +6,22 @@ Reworked for Mattermost [Enterprise edition](https://about.mattermost.com/featur
 
 
 
+
 The license applies to all files inside this repository, not Mattermost itself.
 
 ## Prerequisites
 
 OpenShift Origin 3 up and running, including the capability to create a new project. The simple way is to use `oc cluster up` or [Minishift](https://docs.openshift.org/latest/minishift/getting-started/installing.html)
 
-And you need to deploy MySQL, described below.
+And you need to deploy PostgreSQL, described below.
 
 ## Disclaimer
 
 By now only a Docker build strategy based Mattermost application is provided, this may not be usable on OpenShift Online 3.
 
-This template and Mattermost startup script `mattermost-launch.sh` only supports MySQL.
-
+This template and Mattermost startup script `mattermost-launch.sh` only supports PostgreSQL.
+For MySQL see the [mattermost-openshift](https://github.com/goern/mattermost-openshift)
+ 
 Support for this work is provided as 'best can do' via GitHub.
 
 ## Installation
@@ -38,21 +40,25 @@ oc secrets link mattermost mattermost-database # make the secret available to th
 ```
 
 ### Deployment
+As Mattermost depends on it, lets deploy PostgreSQL to it using a persistent configuration: `oc new-app --template=openshift/postgresql-persistent --labels=app=mattermost --param=POSTGRESQL_USER=mmuser --param=POSTGRESQL_PASSWORD=mostest --param=POSTGRESQL_DATABASE=mattermost` 
 
-As Mattermost depends on it, lets deploy MySQL to it using a persistent configuration: `oc new-app mysql-persistent --labels=app=mattermost --param=MYSQL_USER=mmuser --param=MYSQL_PASSWORD=mostest --param=MYSQL_DATABASE=mattermost_test`
-Next step, import the current image from quay.io and tag it as latest:
+Next step, build a new image from checked out source with:
 
-```
-oc import-image quay.io/goern/mattermost-openshift:4.4.1 --confirm
-oc tag mattermost:4.4.1 mattermost:latest
-```
+``` 
+oc new-build . --strategy=docker --name mattermost
+``` 
 
-If you build your own image dont forget to push it to OpenShift's ImageStreamTag `mattermost/mattermost:latest`.
-
-Main step: deploy Mattermost app using the provided template: `oc new-app mattermost --labels=app=mattermost`. Deployments and Services will be created for you.
+This will create a new build and push the image to ImageStream <project>/mattermost:latest
 
 
-And a route:
+Main step: deploy Mattermost app using the provided template:
+
+`oc new-app mattermost --labels=app=mattermost`. 
+
+Deployments and Services will be created for you.
+
+
+And create a route:
 
 `oc expose service/mattermost --labels=app=mattermost --hostname=mattermost.example.com`
 

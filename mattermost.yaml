@@ -6,18 +6,21 @@ message: |-
   Mattermost Version: ${MATTERMOST_VERSION}
        Database User: from secret `mattermost`
             Password: from secret `mattermost`
-       Database Name: ${MYSQL_DATABASE}
+       Database Name: ${POSTGRESQL_DATABASE}
 
-  Please see https://github.com/goern/mattermost-openshift/blob/master/README.md for detailed infomation.
+  Please see https://github.com/victorklijmeij/mattermost-enterprise-openshift/blob/master/README.md for detailed infomation.
 
   Dont forget to export service ${APPLICATION_NAME} as a route!
 metadata:
   name: mattermost
   annotations:
     description: |-
-      MySQL database service, with persistent storage. For more information about using this template, including OpenShift considerations, see https://github.com/sclorg/mysql-container/blob/master/5.7/README.md.
-
-      NOTE: Scaling to more than one replica is not supported. You must have persistent volumes available in your cluster to use this template.
+      Community template for running Mattermost Enterprise Edition on Openshift (Origin)
+      
+      Mattermost Enterprise features require a valid license.
+      
+      https://about.mattermost.com  
+ 
     openshift.io/display-name: Mattermost
     tags: mattermost
     template.openshift.io/documentation-url: https://github.com/goern/mattermost-openshift/blob/master/README.md
@@ -132,17 +135,17 @@ objects:
   metadata:
     name: mattermost
   data:
-    db_database: '${MYSQL_DATABASE}'
-    db_host: mysql.mattermost.svc
+    db_database: '${POSTGRESQL_DATABASE}'
+    db_host: postgresql.mattermost.svc
 parameters:
 - name: APPLICATION_NAME
   required: true
   value: mattermost
 - name: MATTERMOST_VERSION
   required: true
-  value: v4.4.1
+  value: v4.6.0
 - description: Name of the MySQL database accessed.
-  displayName: MySQL Database Name
-  name: MYSQL_DATABASE
+  displayName: PostgreSQL Database Name
+  name: POSTGRESQL_DATABASE
   required: true
-  value: mattermost_test
+  value: mattermost
