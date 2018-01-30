@@ -142,7 +142,7 @@ parameters:
   required: true
   value: v4.6.0
 - description: Name of the MySQL database accessed.
-  displayName: MySQL Database Name
+  displayName: PostgreSQL Database Name
   name: POSTGRESQL_DATABASE
   required: true
   value: mattermost
