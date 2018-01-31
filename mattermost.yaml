@@ -32,7 +32,7 @@ objects:
 - kind: PersistentVolumeClaim
   apiVersion: v1
   metadata:
-    name: "${APPLICATION_NAME}"
+    name: "${APPLICATION_NAME}-data"
   spec:
     accessModes:
     - ReadWriteOnce
