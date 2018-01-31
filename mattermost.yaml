@@ -63,6 +63,9 @@ objects:
         - image: '${APPLICATION_NAME}'
           imagePullPolicy: Always
           name: '${APPLICATION_NAME}'
+          volumeMounts:
+          - mountPath: /data
+            name: mattermost-data
           env:
           - name: DB_USER
             valueFrom:
@@ -108,6 +111,10 @@ objects:
             requests:
               cpu: 250m
               memory: 128Mi
+        volumes:
+        - persistentVolumeClaim:
+            claimName: mattermost-claim
+          name: mattermost-data
     triggers:
     - type: ImageChange
       imageChangeParams:
