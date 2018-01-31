@@ -27,7 +27,18 @@ metadata:
     template.openshift.io/long-description: This template provides a Mattermost service, it depends on a Secret and MySQL.
     template.openshift.io/provider-display-name: Mattermost Community
     template.openshift.io/support-url: https://github.com/goern/mattermost-openshift/issues
+
 objects:
+- kind: PersistentVolumeClaim
+  apiVersion: v1
+  metadata:
+    name: "${APPLICATION_NAME}"
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: "${VOLUME_CAPACITY}"
 - kind: ImageStream
   apiVersion: v1
   metadata:
@@ -151,7 +162,10 @@ parameters:
 - name: MATTERMOST_VERSION
   required: true
   value: v4.6.0
-- description: Name of the MySQL database accessed.
+- name: VOLUME_CAPACITY
+  required: true
+  value: 10G
+- description: Name of the PostgreSQL database accessed.
   displayName: PostgreSQL Database Name
   name: POSTGRESQL_DATABASE
   required: true
