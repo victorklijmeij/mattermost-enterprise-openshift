@@ -2,8 +2,7 @@
 
 This is a fork of [mattermost-openshift](https://github.com/goern/mattermost-openshift)
 
-Reworked for Mattermost [Enterprise edition](https://about.mattermost.com/features/#featuresEnterprise)
-
+Reworked for Mattermost [Enterprise edition](https://about.mattermost.com/features/#featuresEnterprise) and PostgreSQL.
 
 
 
