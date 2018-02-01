@@ -61,7 +61,7 @@ objects:
   spec:
     selector:
       name: '${APPLICATION_NAME}'
-    replicas: 1
+    replicas: 2
     securityContext: {}
     serviceAccount: mattermost
     serviceAccountName: mattermost
@@ -75,7 +75,7 @@ objects:
           imagePullPolicy: Always
           name: '${APPLICATION_NAME}'
           volumeMounts:
-          - mountPath: /data
+          - mountPath: /opt/mattermost/data
             name: mattermost-data
           env:
           - name: DB_USER
