@@ -32,7 +32,7 @@ objects:
 - kind: PersistentVolumeClaim
   apiVersion: v1
   metadata:
-    name: "${APPLICATION_NAME}-data"
+    name: "mattermost-data"
   spec:
     accessModes:
     - ReadWriteOnce
@@ -124,7 +124,7 @@ objects:
               memory: 128Mi
         volumes:
         - persistentVolumeClaim:
-            claimName: mattermost-claim
+            claimName: mattermost-data
           name: mattermost-data
     triggers:
     - type: ImageChange
