@@ -151,12 +151,14 @@ objects:
 - kind: Route
   apiVersion: v1
   metadata:
-    name: "${APPLICATION_NAME}"
+    name: '${APPLICATION_NAME}'
   spec:
-    host: ""
+    host: '${APPLICATION_DOMAIN}'
     to:
       kind: Service
-      name: "${APPLICATION_NAME}"
+      name: '${APPLICATION_NAME}'
+    port:
+      targetPort: 80-http
 - kind: ConfigMap
   apiVersion: v1
   metadata:
