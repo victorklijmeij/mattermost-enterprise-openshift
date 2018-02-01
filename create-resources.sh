@@ -5,4 +5,4 @@ oc secrets link mattermost mattermost-database # make the secret available to th
 oc new-app --template=openshift/postgresql-persistent --labels=app=mattermost --param=POSTGRESQL_USER=mmuser --param=POSTGRESQL_PASSWORD=mostest --param=POSTGRESQL_DATABASE=mattermost
 oc new-app mattermost --labels=app=mattermost
 oc new-build . --strategy=docker --name mattermost
-oc expose service/mattermost --labels=app=mattermost --hostname=mattermost.192.168.42.2.nip.io
+#oc expose service/mattermost --labels=app=mattermost --hostname=mattermost.192.168.64.2.nip.io
