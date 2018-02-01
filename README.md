@@ -68,8 +68,4 @@ be an Administrator of Mattermost.
 If a new Mattermost container image is available, or if you build one yourself, you need to import it to the ImageStream and retag latest to it. This will automatically deploy the new version.
 
 
-## Building
-
-Building the required Moby container image involves a simple `docker build --rm --tag mattermost:4.4.1 .`. You can see that this is just an example... repositoyname and version may vary :)
-
 
