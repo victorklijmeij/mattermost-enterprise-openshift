@@ -148,6 +148,15 @@ objects:
       targetPort: 8065
     selector:
       deploymentconfig: '${APPLICATION_NAME}'
+- kind: Route
+  apiVersion: v1
+  metadata:
+    name: "${APPLICATION_NAME}"
+  spec:
+    host: "${APPLICATION_DOMAIN}"
+    to:
+      kind: Service
+      name: "${APPLICATION_NAME}"
 - kind: ConfigMap
   apiVersion: v1
   metadata:
