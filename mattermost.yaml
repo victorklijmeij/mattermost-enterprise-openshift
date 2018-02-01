@@ -153,12 +153,12 @@ objects:
   metadata:
     name: '${APPLICATION_NAME}'
   spec:
-    host: '${APPLICATION_DOMAIN}'
+    host: 
     to:
       kind: Service
       name: '${APPLICATION_NAME}'
     port:
-      targetPort: 80-http
+      targetPort: 8065-tcp
 - kind: ConfigMap
   apiVersion: v1
   metadata:
